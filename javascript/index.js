@@ -2,8 +2,7 @@ let totalC = 0
 let totalS = 0 
 let total = 0 
 let pedidos=[]
-const codigo = parseInt(prompt("ingresar 1 para entrar en el programa"))
-class combos{
+class combos{   //class para crear cada uno de los combos 
     constructor(combo,comida, bebida, guarnicio, precio){
     this.combo=combo;
     this.comida=comida;
@@ -48,14 +47,15 @@ const combo4 = new combos(
 ); 
 console.log(combo4)
 
-while (codigo == 1) {
+const codigo = parseInt(prompt("ingresar 1 para entrar en el programa"))
+while (codigo == 1) {   //ciclo while para ingresar en el programa
     let precio = 0
     const codigoCYS = parseInt(prompt("ingresar 1 para pedir combos y 0 para pedir por separados"))
-    if (codigoCYS==1) {
+    if (codigoCYS==1) {     //ciclo if para ver si ingresa al pedido de combos o por separados
         
     const Ccombo = parseInt(prompt("ingresar codigo del combo")) 
-    if (Ccombo>0 && Ccombo<5) {
-    while (Ccombo>0 && Ccombo<5) {
+    if (Ccombo>0 && Ccombo<5) {     //ciclo if para ver que ingrese los codigos correspondientes
+    while (Ccombo>0 && Ccombo<5) {  //ciclo while con switch para diferenciar cada combo
         switch (Ccombo) {
             case 1:
                 precio = precio + 24
@@ -86,8 +86,8 @@ while (codigo == 1) {
     }
 }
 
-    totalC = totalC + precio
-    total= total + totalC
+    totalC = totalC + precio    //total de los productos por combo
+    total= total + totalC   //suma del total con el productos por combo
     }
 
     else if(codigoCYS == 0){
@@ -190,31 +190,31 @@ while (codigo == 1) {
         else {
             alert("ERROR al ingresar codigo");
         }
-        totalS = totalS+cuentaB + cuentaC + cuentaG; 
-        total= total + totalS
+        totalS = totalS +cuentaB + cuentaC + cuentaG;    //total de los productos por separado
+        total= total + totalS   //suma del total con el productos por separados
     }   //Fin del Ciclo
 
     const codigo = parseInt(prompt("ingresar 1 para seguir pidiendo")) 
     if(codigo != 1){
         break;
     }
-}   //Fin del Ciclo
+}   //Fin del Ciclo 
 
-pedidos.sort()
+pedidos.sort()   //.sort para organizar los pedidos en orden alfabetico
 console.log(pedidos);
 
-for(const recorrido of pedidos){
+for(const recorrido of pedidos){    //ciclo for para agregar los productos elegidos a un ticket
     let ubicacion = document.getElementById("ticket")
     let li = document.createElement("li")
     li.innerHTML = recorrido
     ubicacion.append(li)
 };
 
-let totall = document.getElementById("totall")
+let totall = document.getElementById("totall")  //para escribir el total al final del ticket
 totall.innerText = "Total:"+ total
 
 const dividirC = parseInt(prompt("si quiere dividir la cuenta aprete 1"))
-if (dividirC == 1) {
+if (dividirC == 1) {    //para dividir la cuenta en caso de que sean varias personas
     const cantidadP = parseInt(prompt("ingrese la cantidad de personas"))
     const division = total/cantidadP
     console.log("El monto a pagar por cada uno es " + division);
